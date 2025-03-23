@@ -1,0 +1,7 @@
+# nixpacks.toml
+
+[project]
+license = "LGPL-3.0-or-later"
+
+[start]
+cmd = "gunicorn index:app"

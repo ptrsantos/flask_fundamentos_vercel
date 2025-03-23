@@ -1,0 +1,54 @@
+{% extends "clientes/base.html"%}
+
+{% block titulo %}
+Lista de Clientes
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<div class="d-flex justify-content-between">
+    <h1>Lista de Clientes</h1>
+    <a href="{{ url_for('cadastrar_cliente') }}" class="btn btn-success btn-lg mb-3" >Cadastrar cliente</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Data de Nascimento</th>
+            <th>Profissão</th>
+            <th>Sexo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td><a href="{{ url_for('detalhe_cliente', id=cliente.id) }}">{{ cliente.nome }}</a></td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.data_nascimento }}</td>
+            <td>{{ cliente.profissao }}</td>
+            <td>{{ cliente.sexo }}</td>
+            <td>
+                <a href="{{ url_for('editar_cliente', id=cliente.id) }}">Editar</a>
+                <a href="{{ url_for('excluir_cliente', id=cliente.id) }}">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <!-- {% for i in clientes %}
+        <tr>
+            <td><a href="{{ url_for('detalhe_cliente', id = i.id) }}">{{ i.nome }}</a></td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.data_nascimento }}</td>
+            <td>{{ i.profissao }}</td>
+            <td>{{ i.sexo }}</td>
+            <td>
+                <a href="#">Editar</a>
+                <a href="#">Remover</a>
+            </td>
+        </tr>
+        {% endfor %} -->
+    </tbody>
+</table>
+
+{% endblock conteudo %}
