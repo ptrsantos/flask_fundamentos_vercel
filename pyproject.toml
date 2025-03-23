@@ -1,7 +1,7 @@
-# nixpacks.toml
+# pyproject.toml
 
 [project]
-license = "LGPL-3.0-or-later"
+license = "LGPL-2.1-or-later"
 
 [start]
 cmd = "gunicorn index:app"
